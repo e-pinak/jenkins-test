@@ -7,3 +7,4 @@ test six files.
 test seven files.
 test eight files.
 test nine files.
+test ten files.
