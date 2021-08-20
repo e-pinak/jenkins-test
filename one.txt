@@ -3,3 +3,4 @@ test two files.
 test three files.
 test four files.
 test five files.
+test six files.
