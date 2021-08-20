@@ -5,3 +5,4 @@ test four files.
 test five files.
 test six files.
 test seven files.
+test eight files.
