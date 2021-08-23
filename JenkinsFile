@@ -1,8 +1,10 @@
 pipeline {
     agent any 
     stages {
-        stage('Hello') {
-            steps {echo 'Hello'}
+        stage('Remote Server Deployment') {
+            steps {
+                echo 'Remote Server Deployment Started'
+            }
         }
     }
 }
