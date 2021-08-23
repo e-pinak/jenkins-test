@@ -1,9 +1,24 @@
 pipeline {
     agent any 
     stages {
-        stage('Stage 1') {
+        stage('Zipping') {
             steps {
-                echo 'Hello world!' 
+                sh '/var/lib/jenkins/workspace/PipelineTest@script/zip.sh'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh '/var/lib/jenkins/workspace/PipelineTest@script/deploy.sh'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '/var/lib/jenkins/workspace/PipelineTest@script/build.sh'
+            }
+        }
+        stage('Clear') {
+            steps {
+                sh '/var/lib/jenkins/workspace/PipelineTest@script/clear.sh'
             }
         }
     }
