@@ -3,22 +3,22 @@ pipeline {
     stages {
         stage('Zipping') {
             steps {
-                sh '/var/lib/jenkins/workspace/PipelineTest@script/zip.sh'
+                sh './zip.sh'
             }
         }
         stage('Deploy') {
             steps {
-                sh '/var/lib/jenkins/workspace/PipelineTest@script/deploy.sh'
+                sh './deploy.sh'
             }
         }
         stage('Build') {
             steps {
-                sh '/var/lib/jenkins/workspace/PipelineTest@script/build.sh'
+                sh './script/build.sh'
             }
         }
         stage('Clear') {
             steps {
-                sh '/var/lib/jenkins/workspace/PipelineTest@script/clear.sh'
+                sh './clear.sh'
             }
         }
     }
