@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Remote Server Deployment') {
             steps {
-                echo 'Remote Server Deployment Started'
+                sh '/home/admin1/Desktop/jenkins-deploy/remote_server.sh'
             }
         }
     }
