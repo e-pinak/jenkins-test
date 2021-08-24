@@ -17,7 +17,7 @@ node {
             // sh 'cat script.sh'
             // // sh 'cat script.sh | ssh jenkins@34.87.233.18'
             // sh 'cat script.sh | ssh cears@192.138.0.137'
-            sh 'ssh cears@192.138.0.137'
+            sh 'ssh -tt cears@192.138.0.137'
             sh '/var/www/html/passfolio/pfa-laravel/remote-server.sh'
             }
         }
