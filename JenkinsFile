@@ -1,10 +1,31 @@
-pipeline {
-    agent any 
-    stages {
-        stage('Remote Server Deployment') {
-            steps {
-                sh '/home/admin1/Desktop/jenkins-deploy/remote_server.sh'
+node {
+    String buildStatus = 'STARTED'
+    def msg1 = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
+    slackSend(channel: '#build', message: msg1)
+   
+        try {
+           
+            stage('Notify and checkout') {
+            gitCommit = checkout([$class: 'GitSCM', branches: [[name: env.GIT_REPO_REF]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'bitbucket', url: env.GIT_REPO_URL]]])
+            env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
+
+       }
+       
+     stage('deploy') {
+            sshagent(['jenkins']) {
+            sh 'echo "cd /var/www/passfolio/pfa-laravel/ \n ./run.sh" > script.sh'
+            sh 'cat script.sh'
+            sh 'cat script.sh | ssh jenkins@34.87.233.18'
             }
         }
-    }
+       
+   } catch (e) {
+       currentBuild.result = "FAILED"
+       throw e
+   } finally {
+        buildStatus = currentBuild.result ?: 'SUCCESS'
+        def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
+        slackSend(channel: '#build',message: msg)
+   }
+   
 }
