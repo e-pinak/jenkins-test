@@ -12,12 +12,12 @@ node {
     //    }
        
      stage('deploy') {
-            sshagent(['jenkins']) {
-            sh 'echo "cd /var/www/html/passfolio/pfa-laravel/ \n ./run.sh" > script.sh'
-            sh 'cat script.sh'
-            // sh 'cat script.sh | ssh jenkins@34.87.233.18'
-            sh 'cat script.sh | ssh cears@192.138.0.137'
-            }
+            // sshagent(['jenkins']) {
+            // sh 'echo "cd /var/www/html/passfolio/pfa-laravel/ \n ./run.sh" > script.sh'
+            // sh 'cat script.sh'
+            // // sh 'cat script.sh | ssh jenkins@34.87.233.18'
+            // sh 'cat script.sh | ssh cears@192.138.0.137'
+            // }
         }
        
    } catch (e) {
