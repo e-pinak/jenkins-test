@@ -25,7 +25,7 @@ node {
    } finally {
         buildStatus = currentBuild.result ?: 'SUCCESS'
         def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
-        slackSend(channel: '#build',message: msg)
+        // slackSend(channel: '#build',message: msg)
    }
    
 }
