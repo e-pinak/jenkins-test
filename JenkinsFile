@@ -5,9 +5,9 @@ node {
    
         try {
            
-            stage('Notify and checkout') {
-            gitCommit = checkout([$class: 'GitSCM', branches: [[name: env.GIT_REPO_REF]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'bitbucket', url: env.GIT_REPO_URL]]])
-            env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
+            // stage('Notify and checkout') {
+            // gitCommit = checkout([$class: 'GitSCM', branches: [[name: env.GIT_REPO_REF]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'bitbucket', url: env.GIT_REPO_URL]]])
+            // env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
 
        }
        
